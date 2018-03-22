@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
-using Newtonsoft.Json;
 
 namespace ToDoFunctions
 {
@@ -33,10 +32,7 @@ namespace ToDoFunctions
                 return req.CreateResponse(HttpStatusCode.NotFound);
             }
 
-            return new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json")
-            };
+            return req.CreateResponse(HttpStatusCode.OK, item);
         }
     }
 }

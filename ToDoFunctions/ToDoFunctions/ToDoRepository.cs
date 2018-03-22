@@ -14,8 +14,8 @@ namespace ToDoFunctions
         private readonly CloudTable _table;
 
         public ToDoRepository()
-        {                                    
-            var connectionString = ConfigurationManager.AppSettings["TableConnectionString"];
+        {
+            var connectionString = "ConfigurationManager.AppSettings[TableConnectionString];";
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
             _table = tableClient.GetTableReference("Items");
